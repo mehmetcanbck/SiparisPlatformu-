@@ -1,0 +1,36 @@
+-- 0. VERİTABANI OLUŞTURMA VE SEÇME
+CREATE DATABASE SiparisPlatformu;
+GO
+
+USE SiparisPlatformu;
+GO
+
+-- 1. KULLANICILAR TABLOSU
+CREATE TABLE Kullanicilar (
+    KullaniciID INT PRIMARY KEY IDENTITY(1,1), 
+    Ad VARCHAR(50) NOT NULL, 
+    Soyad VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL, 
+    SifreHash VARCHAR(255) NOT NULL, 
+    Telefon VARCHAR(15),
+    KayitTarihi DATETIME DEFAULT CURRENT_TIMESTAMP 
+);
+
+-- 2. RESTORANLAR TABLOSU
+CREATE TABLE Restoranlar (
+    RestoranID INT PRIMARY KEY IDENTITY(1,1),
+    RestoranAdi VARCHAR(100) NOT NULL,
+    Adres VARCHAR(255) NOT NULL,
+    Telefon VARCHAR(15) NOT NULL,
+    MinimumPaketTutari DECIMAL(10,2) DEFAULT 0.00, 
+    AcilisSaati TIME,
+    KapanisSaati TIME,
+    AktifMi BIT DEFAULT 1 
+);
+
+-- 3. KATEGORİLER TABLOSU
+CREATE TABLE Kategoriler (
+    KategoriID INT PRIMARY KEY IDENTITY(1,1),
+    KategoriAdi VARCHAR(50) NOT NULL UNIQUE,
+    Aciklama VARCHAR(200)
+);
