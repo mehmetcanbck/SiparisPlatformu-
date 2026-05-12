@@ -1,18 +1,19 @@
-# Yapay Zeka (AI) Kullanım Beyanı ve Dürüstlük Raporu
+# Yapay Zeka (AI) Kullanım Beyanı
 
-Bu belge, "Çevrimiçi Yemek Sipariş Platformu Veritabanı Tasarımı" projesinin geliştirilmesi sırasında yapay zeka araçlarının nasıl kullanıldığını şeffaf bir şekilde açıklamak amacıyla hazırlanmıştır.
+Bu doküman, Veritabanı Yönetim Sistemleri (VTYS) 1. Dönem Projesi kapsamında geliştirilen "Çevrimiçi Yemek Sipariş Platformu" için yapay zeka araçlarının nasıl kullanıldığını şeffaf bir şekilde açıklamaktadır.
 
-## Kullanılan Araç
-**Gemini** (Yapay Zeka Kodlama Asistanı)
+Proje geliştirme sürecinde yapay zeka, kodu doğrudan üretip teslim etmek amacıyla değil, bir **öğretmen ve rehber** olarak kullanılmıştır.
 
-## Hangi Aşamalarda Kullanıldı?
-Proje süresince yapay zeka bir "kod yazıcı" olmaktan ziyade bir "mentör" ve "kılavuz" olarak kullanılmış, tüm adımlar tartışılarak ilerlenmiştir:
+## Hangi Aşamalarda ve Nasıl Kullanıldı?
 
-1. **Planlama ve Veritabanı Şeması Tasarımı:** Projenin başlangıcında, hangi tabloların oluşturulması gerektiği ve bu tablolar arasındaki ilişkilerin (Primary Key, Foreign Key) nasıl kurulacağı konusunda fikir alışverişi yapılmıştır.
-2. **SQL Kodlarının Yazımı:** Kararlaştırılan tabloların T-SQL sözdizimine uygun olarak oluşturulmasında (CREATE TABLE, veri tipleri, kısıtlamalar) yapay zekadan sözdizimi (syntax) desteği alınmıştır.
-3. **Örnek Veri Üretimi:** Tablolar arası ilişkilerin doğru çalıştığını test edebilmek amacıyla eklenecek olan tutarlı test verilerinin (INSERT INTO) hazırlanmasında destek alınmıştır.
-4. **İleri Düzey SQL Nesneleri:** View (Görünüm) ve Trigger (Tetikleyici) gibi karmaşık veritabanı nesnelerinin mantığı yapay zeka ile tartışılarak öğrenilmiş ve ardından projeye uygun senaryolar kodlanmıştır.
-5. **Versiyon Kontrolü (GitHub):** Yazılan kodların versiyonlanması ve aşama aşama GitHub'a yüklenmesi (git commit, push) adımlarında yapay zekadan terminal komutları konusunda rehberlik alınmıştır.
+1. **Veritabanı Tasarımı ve ER Diyagramı Mantığı:** 
+   Temel tabloların (Kullanıcı, Restoran, Kategori) belirlenmesi ve bu tablolara bağlı ilişkili tabloların (Yemekler, Siparişler) aralarındaki yabancı anahtar (Foreign Key) bağlantılarının nasıl kurulması gerektiği konusunda fikir alışverişi yapılmıştır.
 
-## Öğrenme ve Özgünlük Bildirimi
-Proje dosyasındaki tüm kodların mantığı, tabloların neden birbiriyle ilişkili olduğu, View ve Trigger'ların nasıl çalıştığı tarafımca tamamen kavranmış ve tüm kodlar SSMS üzerinde tarafımca çalıştırılarak test edilmiştir. Yapay zeka, doğrudan projeyi teslim almak için değil, Veritabanı Yönetim Sistemleri (VTYS) konusundaki öğrenme sürecimi hızlandırmak ve doğru endüstri standartlarını uygulamak için bir asistan olarak kullanılmıştır. İşbu sebeple proje süreçlerine ve kodların içeriğine tamamen hakim olduğumu beyan ederim.
+2. **"Askıda Yemek" Sisteminin Kurgulanması (Özgün Tasarım):** 
+   Projenin özel gereksinimlerinden biri olan Askıda Yemek sisteminin veritabanına en doğru şekilde nasıl entegre edileceği tartışılmıştır. Sistemin "Siparişler" tablosuna bir sütun olarak eklenmesi yerine, normalizasyon kurallarına uygun olarak ayrı bir `AskidaYemekler` tablosu halinde tasarlanması kararlaştırılmıştır.
+
+3. **Özgünlük Doğrulamasına (Sözlü Sınav) Hazırlık:** 
+   Geliştirilen her tablonun ne işe yaradığı, neden o veri tiplerinin (örn: VARCHAR, DECIMAL) veya kısıtlamaların (UNIQUE, NOT NULL, DEFAULT) seçildiği yapay zeka ile tartışılarak tam anlamıyla öğrenilmiştir. 
+
+## Sonuç
+Yazılan tüm SQL kodları tarafımca anlaşılarak projenin gereksinimlerine göre uyarlanmış, adım adım test edilmiş ve versiyon kontrolü (Git) kullanılarak parça parça GitHub'a yüklenmiştir. Final sınavı ve sözlü mülakat için tasarımın tüm detaylarına hakim olunmuştur.
